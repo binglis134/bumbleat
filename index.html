@@ -1,1 +1,36 @@
-<h1>testing testing </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form method="post">
+            <input id="calorie-input" type="text" name="calorie_input" placeholder="Calories" autocomplete="off"/>
+            <input id="go-btn" type="submit" value="Let's get shredded!"/>
+        </form>
+        <p id="err-msg"></p>
+        <pre id="results">
+            {{ results }}
+        </pre>
+
+        <p>For gaining mass, a 15% surplus is normal. For losing weight, a 15% defecit is standard while 20% is more aggressive.</p>
+
+        <script>
+            $("form").submit((e) => {
+                var nameInput = $("#calorie-input").val();
+                if (!nameInput) {
+                    $("#err-msg").html("Please enter a calorie amount");
+                    e.preventDefault();
+                    return false;
+                }
+                $("#results").html("Loading...");
+            });
+            $("#calorie-input").on("input", () => {
+                $("#err-msg").html("");
+                $("#results").html("");
+            });
+        </script>
+    </body>
+</html>
+
